@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="BibiliotecaApplication" default="run">
+    <target name="compile" >
+        <javac srcdir="src;test" includeantruntime="true" destdir="antBuild">
+            <classpath location="lib/junit-4.11.jar"/>
+        </javac>
+    </target>
+
+    <target name="unit_tests" depends="compile">
+        <junit haltonerror="true" haltonfailure="true" printsummary="true">
+            <classpath location="lib/junit-4.11.jar" path="antBuild"/>
+            <test name="com.twu.*" haltonfailure="true" haltonerror="true"/>
+        </junit>
+    </target>
+
+    <target name ="createJar" depends="compile">
+        <jar destfile="lib/app.jar"
+             basedir="antBuild"
+             excludes="**/Test.class"/>
+    </target>
+
+    <target name="run" depends="createJar">
+        <java classname="com.twu.biblioteca.BibliotecaApp">
+            <classpath>
+                <pathelement location="lib/app.jar"/>
+                <pathelement path="${java.class.path}"/>
+            </classpath>
+        </java>
+    </target>
+</project>
