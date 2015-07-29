@@ -28,7 +28,7 @@ public class ViewTest {
     @Test
     public void shouldKnowTheOutputGivenOnScreen() {
         View view = new View();
-        view.displayWelcomeMessage();
+        view.display();
         String message = "Welcome to Bibilioteca -- the library management system\n";
 
         assertEquals(message, outputContent.toString());
@@ -40,7 +40,7 @@ public class ViewTest {
         ArrayList<String> bookList =new ArrayList<String>();
         bookList.add("Wings Of Fire");
         bookList.add("Two States");
-        view.displayListOfBooks(bookList);
+        view.display(bookList);
         String message = "List of books are\n";
         message = message + bookList;
         assertEquals(message, outputContent.toString());
