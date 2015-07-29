@@ -3,6 +3,7 @@
     <target name="compile" >
         <javac srcdir="src;test" includeantruntime="true" destdir="antBuild">
             <classpath location="lib/junit-4.11.jar"/>
+            <classpath location="lib/mockito-all-1.9.5.jar"/>
         </javac>
     </target>
 
@@ -20,7 +21,7 @@
     </target>
 
     <target name="run" depends="createJar">
-        <java classname="com.twu.biblioteca.BibliotecaApp">
+        <java classname="com.twu.biblioteca.Main">
             <classpath>
                 <pathelement location="lib/app.jar"/>
                 <pathelement path="${java.class.path}"/>

@@ -4,8 +4,12 @@ import java.util.ArrayList;
 
 public class BibliotecaApp {
 
-    public static void main(String[] args) {
-        View view = new View();
+    private View view;
+
+    public BibliotecaApp(View view) {
+        this.view = view;
+    }
+    public void start() {
         view.display();
         ArrayList<String> bookList = new ArrayList<String>();
         bookList.add("Wings of fire");
