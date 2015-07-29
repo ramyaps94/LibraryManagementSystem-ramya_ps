@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -31,5 +32,18 @@ public class ViewTest {
         String message = "Welcome to Bibilioteca -- the library management system\n";
 
         assertEquals(message, outputContent.toString());
+    }
+
+    @Test
+    public void shouldKnowTheOutputGivenOnScreenWithParticularFormat() {
+        View view = new View();
+        ArrayList<String> bookList =new ArrayList<String>();
+        bookList.add("Wings Of Fire");
+        bookList.add("Two States");
+        view.displayListOfBooks(bookList);
+        String message = "List of books are\n";
+        message = message + bookList;
+        assertEquals(message, outputContent.toString());
+
     }
 }
