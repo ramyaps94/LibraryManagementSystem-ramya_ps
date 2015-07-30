@@ -55,9 +55,11 @@ public class ViewTest {
         view.display(bookList);
 
         assertEquals("List of books are\n" +
-                "    |title    |    |year    |    |author    |\n" +
-                "    |Abdhul Kalam    |    |1995    |    |Wings Of Fire    |\n" +
-                "    |Chethan Bhaghat    |    |2015    |    |What young India Wants    |\n", outputContent.toString());
+                "                         title                        author                          year\n" +
+                "\n" +
+                "=========================================================================================\n" +
+                "                 Wings Of Fire                  Abdhul Kalam                          1995\n" +
+                "        What young India Wants               Chethan Bhaghat                          2015\n", outputContent.toString());
 
     }
     }
