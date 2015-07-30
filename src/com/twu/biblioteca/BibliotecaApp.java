@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BibliotecaApp {
 
@@ -11,9 +12,17 @@ public class BibliotecaApp {
     }
     public void start() {
         view.display();
-        ArrayList<String> bookList = new ArrayList<String>();
-        bookList.add("Wings of fire");
-        bookList.add("Harry Potter");
+        ArrayList < HashMap < String ,String>> bookList = new ArrayList< HashMap<String , String>>();
+        HashMap < String , String> book1 = new HashMap < String , String>();
+        book1.put("Title" ,"Wings Of Fire");
+        book1.put("Author" ,"Abdhul Kalam");
+        book1.put("year" , "1995");
+        HashMap < String , String> book2 = new HashMap < String, String >();
+        book2.put("Title" , "What young India Wants");
+        book2.put("Author" , "Chethan Bhaghat");
+        book2.put("year" , "2015");
+        bookList.add(book1);
+        bookList.add(book2);
         view.display(bookList);
     }
 }

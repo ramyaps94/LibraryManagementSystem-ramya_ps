@@ -7,6 +7,9 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
@@ -36,14 +39,25 @@ public class ViewTest {
 
     @Test
     public void shouldKnowTheOutputGivenOnScreenWithParticularFormat() {
+        ArrayList<HashMap<String, String>> bookList = new ArrayList<HashMap<String, String>>();
+        HashMap<String, String> book1 = new HashMap<String, String>();
+        book1.put("Title", "Wings Of Fire");
+        book1.put("Author", "Abdhul Kalam");
+        book1.put("year", "1995");
+        HashMap<String, String> book2 = new HashMap<String, String>();
+        book2.put("Title", "What young India Wants");
+        book2.put("Author", "Chethan Bhaghat");
+        book2.put("year", "2015");
+        bookList.add(book1);
+        bookList.add(book2);
+
         View view = new View();
-        ArrayList<String> bookList =new ArrayList<String>();
-        bookList.add("Wings Of Fire");
-        bookList.add("Two States");
         view.display(bookList);
-        String message = "List of books are\n";
-        message = message + bookList;
-        assertEquals(message, outputContent.toString());
+
+        assertEquals("List of books are\n" +
+                "    |title    |    |year    |    |author    |\n" +
+                "    |Abdhul Kalam    |    |1995    |    |Wings Of Fire    |\n" +
+                "    |Chethan Bhaghat    |    |2015    |    |What young India Wants    |\n", outputContent.toString());
 
     }
-}
+    }
