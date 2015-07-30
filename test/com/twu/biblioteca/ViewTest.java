@@ -4,7 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,4 +63,14 @@ public class ViewTest {
                 "        What young India Wants               Chethan Bhaghat                          2015\n", outputContent.toString());
 
     }
+
+    @Test
+    public void shouldTakeUserInput() {
+        View view = new View();
+        String input = "add 5";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertEquals("add 5", view.acceptInput());
     }
+}

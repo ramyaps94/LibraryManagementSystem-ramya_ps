@@ -19,9 +19,9 @@ public class View {
         System.out.println(s);
     }
 
-    public int acceptInput() {
+    public String acceptInput() {
         Scanner scanner = new Scanner(System.in);
-        int option = scanner.nextInt();
+        String option = scanner.nextLine();
         return option;
     }
 }
