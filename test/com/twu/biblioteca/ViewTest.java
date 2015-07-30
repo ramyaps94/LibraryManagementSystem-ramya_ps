@@ -8,8 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -31,7 +30,7 @@ public class ViewTest {
     @Test
     public void shouldKnowTheOutputGivenOnScreen() {
         View view = new View();
-        view.display();
+        view.display("Welcome to Bibilioteca -- the library management system");
         String message = "Welcome to Bibilioteca -- the library management system\n";
 
         assertEquals(message, outputContent.toString());
@@ -57,7 +56,7 @@ public class ViewTest {
         assertEquals("List of books are\n" +
                 "                         title                        author                          year\n" +
                 "\n" +
-                "=========================================================================================\n" +
+                "==============================================================================================\n" +
                 "                 Wings Of Fire                  Abdhul Kalam                          1995\n" +
                 "        What young India Wants               Chethan Bhaghat                          2015\n", outputContent.toString());
 
