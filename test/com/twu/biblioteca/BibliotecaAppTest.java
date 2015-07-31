@@ -22,6 +22,16 @@ public class BibliotecaAppTest {
     }
 
     @Test
+    public void shouldBeAbleToDisplaySuggestionToUserWhenHeEntersOtherThanValidOptionOfMenu() {
+        View view = mock(View.class);
+        ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
+        BibliotecaApp application = new BibliotecaApp(view, bookList);
+        when(view.acceptInput()).thenReturn("8").thenReturn("0");
+        application.start();
+        verify(view).display("Select a valid option!");
+    }
+
+    @Test
     public void shouldBeAbleToDisplayBookListWhenUserEnters1() {
         View view = mock(View.class);
         ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
