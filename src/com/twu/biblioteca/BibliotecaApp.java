@@ -2,15 +2,17 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class BibliotecaApp {
 
     private View view;
-    private ArrayList<HashMap<String, String>> bookList;
+    private ArrayList<HashMap<String, String>> allAvailableBookList;
+    private ArrayList<HashMap<String, String>> checkedOutBookList = new ArrayList<HashMap<String, String>>();
 
     public BibliotecaApp(View view, ArrayList<HashMap<String,String>> bookList) {
         this.view = view;
-        this.bookList = bookList;
+        this.allAvailableBookList = bookList;
     }
 
     public void start() {
@@ -21,10 +23,13 @@ public class BibliotecaApp {
             option = view.acceptInput();
             switch (option) {
                 case "1":
-                    view.display(bookList);
+                    view.display(allAvailableBookList);
                     break;
-                //case "2":
-                  //  view.display
+                case "2":
+                    view.display("Enter the name of the book to borrow");
+                    String UsersChoice = view.acceptInput();
+                    checkOutBook(UsersChoice);
+                    break;
                 case "0":
                     view.display("The application is quiting !!! Thank You");
                     break;
@@ -33,7 +38,25 @@ public class BibliotecaApp {
                     break;
             }
 
-        } while (option != "0");
+        } while (!option.equals("0"));
 
+    }
+
+    void checkOutBook(String usersChoice) {
+        for (int index = 0; index < allAvailableBookList.size(); index++) {
+            HashMap book = allAvailableBookList.get(index);
+            if (Objects.equals(usersChoice, book.get("Title"))) {
+                checkedOutBookList.add(book);
+                allAvailableBookList.remove(book);
+            }
+        }
+    }
+
+    public ArrayList<HashMap<String, String>> getAllAvailableBook() {
+        return allAvailableBookList;
+    }
+
+    public ArrayList<HashMap<String, String>> getCheckedOutBook() {
+        return checkedOutBookList;
     }
 }

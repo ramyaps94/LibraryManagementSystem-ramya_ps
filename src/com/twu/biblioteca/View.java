@@ -29,5 +29,6 @@ public class View {
         System.out.println("Menu options are");
         System.out.println("Enter 1 to list the books");
         System.out.println("Enter 0 to quit");
+        System.out.println("Enter 2 to check out books");
     }
 }
