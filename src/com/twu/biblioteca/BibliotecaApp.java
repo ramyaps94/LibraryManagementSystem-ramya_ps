@@ -15,12 +15,25 @@ public class BibliotecaApp {
 
     public void start() {
         view.display("Welcome to Bibilioteca -- the library management system");
-        view.display("Menu options are");
-        view.display("Enter 1 to list the books");
-        String option = view.acceptInput();
-        if (option.equals("1"))
-            view.display(bookList);
-        else
-            view.display("Enter 1 to display list of books");
+        String option;
+        do {
+            view.displayMenu();
+            option = view.acceptInput();
+            switch (option) {
+                case "1":
+                    view.display(bookList);
+                    break;
+                //case "2":
+                  //  view.display
+                case "0":
+                    view.display("The application is quiting !!! Thank You");
+                    break;
+                default:
+                    view.display("Select a valid option!");
+                    break;
+            }
+
+        } while (option != "0");
+
     }
 }
