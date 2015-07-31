@@ -45,12 +45,11 @@ public class BibliotecaApp {
     void checkOutBook(String usersChoice) {
         for (int index = 0; index < allAvailableBookList.size(); index++) {
             HashMap book = allAvailableBookList.get(index);
-            if (Objects.equals(usersChoice, book.get("Title"))) {
+            if(usersChoice.equalsIgnoreCase((String) book.get("Title")))
                 checkedOutBookList.add(book);
                 allAvailableBookList.remove(book);
             }
         }
-    }
 
     public ArrayList<HashMap<String, String>> getAllAvailableBook() {
         return allAvailableBookList;
