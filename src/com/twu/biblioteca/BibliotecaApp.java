@@ -35,7 +35,10 @@ public class BibliotecaApp {
                 case "3":
                     view.display("Enter the name of the book to return");
                     usersChoice = view.acceptInput();
-                    checkInBook(usersChoice);
+                    if(checkInBook(usersChoice))
+                        view.display("Thank you for returning the book.");
+                    else
+                        view.display("That is not a valid book to return");
                     break;
                 case "0":
                     view.display("The application is quiting !!! Thank You");
@@ -49,15 +52,16 @@ public class BibliotecaApp {
 
     }
 
-    void checkInBook(String usersChoice) {
+    Boolean checkInBook(String usersChoice) {
         for (int index = 0; index < checkedOutBookList.size(); index++) {
             HashMap book = checkedOutBookList.get(index);
             if (usersChoice.equalsIgnoreCase(String.valueOf(book.get("Title")))) {
                 allAvailableBookList.add(book);
                 checkedOutBookList.remove(book);
+                return true;
             }
         }
-
+            return false;
     }
 
     Boolean checkOutBook(String usersChoice) {
