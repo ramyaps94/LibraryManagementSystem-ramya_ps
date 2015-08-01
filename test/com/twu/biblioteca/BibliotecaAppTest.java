@@ -74,7 +74,7 @@ public class BibliotecaAppTest {
 
         ExpectedCheckList.add(book1);
 
-        assertEquals(ExpectedCheckList , ActualCheckList);
+        assertEquals(ExpectedCheckList, ActualCheckList);
     }
 
      @Test
@@ -99,8 +99,36 @@ public class BibliotecaAppTest {
          Boolean expectedCheckOutStatus = application.checkOutBook("Wings Of Fire");
          application.start();
          verify(view).display("Enter the name of the book to borrow");
-        // verify(view).display("Thank you! Enjoy the book");
+         //when(view.acceptInput()).thenReturn(String.valueOf(expectedCheckOutStatus));
+         //verify(view).display("Thank you! Enjoy the book");
 
      }
+
+
+    @Test
+    public void shouldBeAbleToCheckInBookAndAddItToAllAvailableBookList() {
+        View view = mock(View.class);
+        ArrayList<HashMap<String, String>> bookList = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> ActualBookList = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> ExpectedCheckList = new ArrayList<HashMap<String, String>>();
+        HashMap<String, String> book1 = new HashMap<>();
+        book1.put("Title", "Wings Of Fire");
+        book1.put("Author", "Abdhul Kalam");
+        book1.put("year", "1995");
+        HashMap<String, String> book2 = new HashMap<>();
+        book2.put("Title", "What young India Wants");
+        book2.put("Author", "Chethan Bhaghat");
+        book2.put("year", "2015");
+        ExpectedCheckList.add(book1);
+        ExpectedCheckList.add(book2);
+        BibliotecaApp application = new BibliotecaApp(view ,bookList);
+        application.checkInBook("Wings Of Fire");
+        ExpectedCheckList.remove(book1);
+
+        ActualBookList = application.getAllAvailableBook();
+        bookList.add(book1);
+
+        assertEquals(bookList, ActualBookList);
+    }
 
 }

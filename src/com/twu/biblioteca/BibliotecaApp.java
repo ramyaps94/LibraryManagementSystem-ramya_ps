@@ -26,11 +26,16 @@ public class BibliotecaApp {
                     break;
                 case "2":
                     view.display("Enter the name of the book to borrow");
-                    String UsersChoice = view.acceptInput();
-                    if(checkOutBook(UsersChoice))
+                    String usersChoice = view.acceptInput();
+                    if (checkOutBook(usersChoice))
                         view.display("Thank you! Enjoy the book");
                     else
                         view.display("That book is not available");
+                    break;
+                case "3":
+                    view.display("Enter the name of the book to return");
+                    usersChoice = view.acceptInput();
+                    checkInBook(usersChoice);
                     break;
                 case "0":
                     view.display("The application is quiting !!! Thank You");
@@ -41,6 +46,17 @@ public class BibliotecaApp {
             }
 
         } while (!option.equals("0"));
+
+    }
+
+    void checkInBook(String usersChoice) {
+        for (int index = 0; index < checkedOutBookList.size(); index++) {
+            HashMap book = checkedOutBookList.get(index);
+            if (usersChoice.equalsIgnoreCase(String.valueOf(book.get("Title")))) {
+                allAvailableBookList.add(book);
+                checkedOutBookList.remove(book);
+            }
+        }
 
     }
 
@@ -56,6 +72,7 @@ public class BibliotecaApp {
             return false;
 
     }
+
     public ArrayList<HashMap<String, String>> getAllAvailableBook() {
         return allAvailableBookList;
     }
