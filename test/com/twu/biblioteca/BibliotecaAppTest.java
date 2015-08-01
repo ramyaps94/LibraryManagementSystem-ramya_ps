@@ -75,6 +75,32 @@ public class BibliotecaAppTest {
         ExpectedCheckList.add(book1);
 
         assertEquals(ExpectedCheckList , ActualCheckList);
-
     }
+
+     @Test
+         public void shouldBeAbleToCallViewToPrintSuccessfulCheckoutMessage() {
+
+         ArrayList<HashMap<String, String>> bookList = new ArrayList<HashMap<String, String>>();
+
+         HashMap<String, String> book1 = new HashMap<>();
+         book1.put("Title", "Wings Of Fire");
+         book1.put("Author", "Abdhul Kalam");
+         book1.put("year", "1995");
+         HashMap<String, String> book2 = new HashMap<>();
+         book2.put("Title", "What young India Wants");
+         book2.put("Author", "Chethan Bhaghat");
+         book2.put("year", "2015");
+         bookList.add(book1);
+         bookList.add(book2);
+         View view = mock(View.class);
+         BibliotecaApp application = new BibliotecaApp(view ,bookList);
+         ArrayList<ArrayList<String>> books = new ArrayList<ArrayList<String>>();
+         when(view.acceptInput()).thenReturn("2").thenReturn("0");
+         Boolean expectedCheckOutStatus = application.checkOutBook("Wings Of Fire");
+         application.start();
+         verify(view).display("Enter the name of the book to borrow");
+        // verify(view).display("Thank you! Enjoy the book");
+
+     }
+
 }

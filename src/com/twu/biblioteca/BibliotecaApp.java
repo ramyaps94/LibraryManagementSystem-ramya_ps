@@ -2,7 +2,6 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class BibliotecaApp {
 
@@ -28,7 +27,10 @@ public class BibliotecaApp {
                 case "2":
                     view.display("Enter the name of the book to borrow");
                     String UsersChoice = view.acceptInput();
-                    checkOutBook(UsersChoice);
+                    if(checkOutBook(UsersChoice))
+                        view.display("Thank you! Enjoy the book");
+                    else
+                        view.display("That book is not available");
                     break;
                 case "0":
                     view.display("The application is quiting !!! Thank You");
@@ -42,15 +44,18 @@ public class BibliotecaApp {
 
     }
 
-    void checkOutBook(String usersChoice) {
+    Boolean checkOutBook(String usersChoice) {
         for (int index = 0; index < allAvailableBookList.size(); index++) {
             HashMap book = allAvailableBookList.get(index);
-            if(usersChoice.equalsIgnoreCase((String) book.get("Title")))
+            if (usersChoice.equalsIgnoreCase(String.valueOf(book.get("Title")))) {
                 checkedOutBookList.add(book);
                 allAvailableBookList.remove(book);
+                return true;
             }
         }
+            return false;
 
+    }
     public ArrayList<HashMap<String, String>> getAllAvailableBook() {
         return allAvailableBookList;
     }
