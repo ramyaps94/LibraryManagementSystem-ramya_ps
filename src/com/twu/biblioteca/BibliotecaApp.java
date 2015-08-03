@@ -7,7 +7,7 @@ public class BibliotecaApp {
 
     private View view;
     private ArrayList<HashMap<String, String>> allAvailableBookList;
-    private ArrayList<HashMap<String, String>> checkedOutBookList = new ArrayList<HashMap<String, String>>();
+    private ArrayList<HashMap<String, String>> checkedOutBookList = new ArrayList<>();
 
     public BibliotecaApp(View view, ArrayList<HashMap<String,String>> bookList) {
         this.view = view;
