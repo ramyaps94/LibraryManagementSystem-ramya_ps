@@ -30,7 +30,7 @@ public class Main {
         movie2.put("rating","8");
         movieList.add(movie1);
         movieList.add(movie2);
-        BibliotecaApp application = new BibliotecaApp(view ,bookList);
+        BibliotecaApp application = new BibliotecaApp(view ,bookList , movieList);
         application.start();
     }
 }

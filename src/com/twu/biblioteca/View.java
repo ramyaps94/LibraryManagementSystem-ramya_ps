@@ -31,6 +31,7 @@ public class View {
         System.out.println("Enter 2 to check out books");
         System.out.println("Enter 3 to check in books");
         System.out.println("Enter 4 to list the checked out books");
+        System.out.println("Enter 5 to list all the movie list");
         System.out.println("Enter 0 to quit");
     }
 }

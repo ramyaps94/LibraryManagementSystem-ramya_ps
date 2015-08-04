@@ -7,13 +7,13 @@ public class BibliotecaApp {
 
     private View view;
     private ArrayList<HashMap<String, String>> allAvailableBookList;
-    //private ArrayList<HashMap<String, String>> allAvailableMovieList;
+    private ArrayList<HashMap<String, String>> allAvailableMovieList;
     private ArrayList<HashMap<String, String>> checkedOutBookList = new ArrayList<>();
 
-    public BibliotecaApp(View view, ArrayList<HashMap<String, String>> bookList) {
+    public BibliotecaApp(View view, ArrayList<HashMap<String, String>> bookList, ArrayList<HashMap<String, String>> movieList) {
         this.view = view;
         this.allAvailableBookList = bookList;
-        //this.allAvailableMovieList = movieList;
+        this.allAvailableMovieList = movieList;
     }
 
     public void start() {
@@ -44,6 +44,9 @@ public class BibliotecaApp {
                     break;
                 case "4":
                     view.display(checkedOutBookList);
+                    break;
+                case "5":
+                    view.display(allAvailableMovieList);
                     break;
                 case "0":
                     view.display("The application is quiting !!! Thank You");
