@@ -59,10 +59,10 @@ public class BibliotecaAppTest {
     @Test
     public void shouldBeAbleToCheckOutBookAndAddItToCheckedOutList() {
         View view = mock(View.class);
-        ArrayList<HashMap<String, String>> bookList = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
         ArrayList<HashMap<String, String>> movieList = new ArrayList<>();
-        ArrayList<HashMap<String, String>> ActualCheckList = new ArrayList<HashMap<String, String>>();
-        ArrayList<HashMap<String, String>> ExpectedCheckList = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> ActualCheckList;
+        ArrayList<HashMap<String, String>> ExpectedCheckList = new ArrayList<>();
         HashMap<String, String> book1 = new HashMap<>();
         book1.put("Title", "Wings Of Fire");
         book1.put("Author", "Abdhul Kalam");
@@ -85,7 +85,7 @@ public class BibliotecaAppTest {
      @Test
          public void shouldBeAbleToCallViewToPrintSuccessfulCheckoutMessage() {
 
-         ArrayList<HashMap<String, String>> bookList = new ArrayList<HashMap<String, String>>();
+         ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
          ArrayList<HashMap<String, String>> movieList = new ArrayList<>();
          HashMap<String, String> book1 = new HashMap<>();
          book1.put("Title", "Wings Of Fire");
@@ -99,7 +99,7 @@ public class BibliotecaAppTest {
          bookList.add(book2);
          View view = mock(View.class);
          BibliotecaApp application = new BibliotecaApp(view ,bookList, movieList);
-         ArrayList<ArrayList<String>> books = new ArrayList<ArrayList<String>>();
+         ArrayList<ArrayList<String>> books = new ArrayList<>();
          when(view.acceptInput()).thenReturn("2").thenReturn("0");
          Boolean expectedCheckOutStatus = application.checkOutBook("Wings Of Fire");
          application.start();
@@ -112,10 +112,10 @@ public class BibliotecaAppTest {
     @Test
     public void shouldBeAbleToCheckInBookAndAddItToAllAvailableBookList() {
         View view = mock(View.class);
-        ArrayList<HashMap<String, String>> bookList = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
         ArrayList<HashMap<String, String>> movieList = new ArrayList<>();
-        ArrayList<HashMap<String, String>> ActualBookList = new ArrayList<HashMap<String, String>>();
-        ArrayList<HashMap<String, String>> ExpectedCheckList = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> ActualBookList;
+        ArrayList<HashMap<String, String>> ExpectedCheckList = new ArrayList<>();
         HashMap<String, String> book1 = new HashMap<>();
         book1.put("Title", "Wings Of Fire");
         book1.put("Author", "Abdhul Kalam");
@@ -137,7 +137,7 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldBeAbleToDisplayAllCheckedOutBookListWhenUserEnters1() {
+    public void shouldBeAbleToDisplayAllCheckedOutBookListWhenUserEnters4() {
         View view = mock(View.class);
         ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
         ArrayList<HashMap<String, String>> movieList = new ArrayList<>();
@@ -157,6 +157,35 @@ public class BibliotecaAppTest {
         when(view.acceptInput()).thenReturn("5").thenReturn("0");
         application.start();
         verify(view).display(movieList);
+    }
+
+    @Test
+    public void shouldBeAbleToCheckOutMovieAndAddItToCheckedOutMovieList() {
+        View view = mock(View.class);
+        ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
+        ArrayList<HashMap<String, String>> movieList = new ArrayList<>();
+        ArrayList<HashMap<String, String>> ActualCheckList;
+        ArrayList<HashMap<String, String>> ExpectedCheckList = new ArrayList<>();
+        HashMap<String, String> book1 = new HashMap<>();
+        HashMap<String, String> movie1 = new HashMap<>();
+        movie1.put("Name", "3 Idiots");
+        movie1.put("year", "2011");
+        movie1.put("director", "xyz");
+        movie1.put("rating", "9");
+        HashMap<String, String> movie2 = new HashMap<>();
+        movie2.put("Name" , "pk");
+        movie2.put("year", "2015");
+        movie2.put("director", "abc");
+        movie2.put("rating","8");
+        movieList.add(movie1);
+        movieList.add(movie2);
+        BibliotecaApp application = new BibliotecaApp(view ,bookList, movieList);
+        application.checkOutMovie("3 Idiots");
+        ActualCheckList = application.getCheckedOutMovie();
+
+        ExpectedCheckList.add(movie1);
+
+        assertEquals(ExpectedCheckList, ActualCheckList);
     }
 
 }

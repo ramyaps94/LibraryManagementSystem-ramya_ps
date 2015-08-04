@@ -9,6 +9,7 @@ public class BibliotecaApp {
     private ArrayList<HashMap<String, String>> allAvailableBookList;
     private ArrayList<HashMap<String, String>> allAvailableMovieList;
     private ArrayList<HashMap<String, String>> checkedOutBookList = new ArrayList<>();
+    private ArrayList<HashMap<String, String>> checkedOutMovieList = new ArrayList<>();
 
     public BibliotecaApp(View view, ArrayList<HashMap<String, String>> bookList, ArrayList<HashMap<String, String>> movieList) {
         this.view = view;
@@ -48,6 +49,14 @@ public class BibliotecaApp {
                 case "5":
                     view.display(allAvailableMovieList);
                     break;
+                case "6":
+                    view.display("Enter the movie to enjoy");
+                    usersChoice = view.acceptInput();
+                    if (checkOutMovie(usersChoice))
+                        view.display("Thank you! Enjoy the movie");
+                    else
+                        view.display("That movie is not available");
+                    break;
                 case "0":
                     view.display("The application is quiting !!! Thank You");
                     break;
@@ -84,6 +93,18 @@ public class BibliotecaApp {
             return false;
 
     }
+    Boolean checkOutMovie(String usersChoice) {
+        for (int index = 0; index < allAvailableMovieList.size(); index++) {
+            HashMap movie = allAvailableMovieList.get(index);
+            if (usersChoice.equalsIgnoreCase(String.valueOf(movie.get("Name")))) {
+                checkedOutMovieList.add(movie);
+                allAvailableMovieList.remove(movie);
+                return true;
+            }
+        }
+        return false;
+
+    }
 
     public ArrayList<HashMap<String, String>> getAllAvailableBook() {
         return allAvailableBookList;
@@ -91,5 +112,9 @@ public class BibliotecaApp {
 
     public ArrayList<HashMap<String, String>> getCheckedOutBook() {
         return checkedOutBookList;
+    }
+
+    public ArrayList<HashMap<String, String>> getCheckedOutMovie() {
+        return checkedOutMovieList;
     }
 }

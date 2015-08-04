@@ -40,12 +40,12 @@ public class ViewTest {
 
     @Test
     public void shouldKnowTheOutputGivenOnScreenWithParticularFormat() {
-        ArrayList<HashMap<String, String>> bookList = new ArrayList<HashMap<String, String>>();
-        HashMap<String, String> book1 = new HashMap<String, String>();
+        ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
+        HashMap<String, String> book1 = new HashMap<>();
         book1.put("Title", "Wings Of Fire");
         book1.put("Author", "Abdhul Kalam");
         book1.put("year", "1995");
-        HashMap<String, String> book2 = new HashMap<String, String>();
+        HashMap<String, String> book2 = new HashMap<>();
         book2.put("Title", "What young India Wants");
         book2.put("Author", "Chethan Bhaghat");
         book2.put("year", "2015");
