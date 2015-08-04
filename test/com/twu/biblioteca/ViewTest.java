@@ -39,7 +39,7 @@ public class ViewTest {
     }
 
     @Test
-    public void shouldKnowTheOutputGivenOnScreenWithParticularFormat() {
+    public void shouldKnowTheOutputGivenOnScreenWithParticularFormatForBooks() {
         ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
         HashMap<String, String> book1 = new HashMap<>();
         book1.put("Title", "Wings Of Fire");
@@ -61,6 +61,33 @@ public class ViewTest {
                 "==============================================================================================\n" +
                 "                 Wings Of Fire                  Abdhul Kalam                          1995\n" +
                 "        What young India Wants               Chethan Bhaghat                          2015\n", outputContent.toString());
+
+    }
+
+    @Test
+    public void shouldKnowTheOutputGivenOnScreenWithParticularFormatForMovies() {
+        ArrayList<HashMap<String, String>> movieList = new ArrayList<>();
+        HashMap<String, String> movie1 = new HashMap<>();
+        movie1.put("Name", "3 Idiots");
+        movie1.put("Year", "2011");
+        movie1.put("Director", "xyz");
+        movie1.put("Rating", "9");
+        HashMap<String, String> movie2 = new HashMap<>();
+        movie2.put("Name" , "pk");
+        movie2.put("Year", "2015");
+        movie2.put("Director", "abc");
+        movie2.put("Rating","8");
+        movieList.add(movie1);
+        movieList.add(movie2);
+        View view = new View();
+        view.displayMovieList(movieList);
+
+        assertEquals("List of movies are\n" +
+                "                          name                          year                      director                        rating\n" +
+                "\n" +
+                "=============================================================================================================================\n" +
+                "                      3 Idiots                          2011                           xyz                             9\n" +
+                "                            pk                          2015                           abc                             8\n", outputContent.toString());
 
     }
 

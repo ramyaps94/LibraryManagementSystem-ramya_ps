@@ -26,6 +26,7 @@ public class BibliotecaApp {
             switch (option) {
                 case "1":
                     view.displayBookList(allAvailableBookList);
+                    view.displaySeparator();
                     break;
                 case "2":
                     view.display("Enter the name of the book to borrow");
@@ -34,6 +35,7 @@ public class BibliotecaApp {
                         view.display("Thank you! Enjoy the book");
                     else
                         view.display("That book is not available");
+                    view.displaySeparator();
                     break;
                 case "3":
                     view.display("Enter the name of the book to return");
@@ -42,12 +44,15 @@ public class BibliotecaApp {
                         view.display("Thank you for returning the book.");
                     else
                         view.display("That is not a valid book to return");
+                    view.displaySeparator();
                     break;
                 case "4":
                     view.displayBookList(checkedOutBookList);
+                    view.displaySeparator();
                     break;
                 case "5":
                     view.displayMovieList(allAvailableMovieList);
+                    view.displaySeparator();
                     break;
                 case "6":
                     view.display("Enter the movie to enjoy");
@@ -56,6 +61,7 @@ public class BibliotecaApp {
                         view.display("Thank you! Enjoy the movie");
                     else
                         view.display("That movie is not available");
+                    view.displaySeparator();
                     break;
                 case "7":
                     view.display("Enter the name of the movie to return");
@@ -64,12 +70,17 @@ public class BibliotecaApp {
                         view.display("Thank you for returning the movie.");
                     else
                         view.display("That is not a valid movie to return");
+                    view.displaySeparator();
                     break;
+                case "8":
+                    view.displayMovieList(checkedOutMovieList);
+                    view.displaySeparator();
                 case "0":
                     view.display("The application is quiting !!! Thank You");
                     break;
                 default:
                     view.display("Select a valid option!");
+                    view.displaySeparator();
                     break;
             }
 

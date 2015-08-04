@@ -33,6 +33,8 @@ public class View {
         System.out.println("Enter 4 to list the checked out books");
         System.out.println("Enter 5 to list all the movie list");
         System.out.println("Enter 6 to check out movie");
+        System.out.println("Enter 7 to check in movie");
+        System.out.println("Enter 8 to list all the checked out movies");
         System.out.println("Enter 0 to quit");
     }
 
@@ -45,5 +47,12 @@ public class View {
             String FormattedMovie = String.format("%30s%30s%30s%30s", movie.get("Name"), movie.get("Year"), movie.get("Director"), movie.get("Rating"));
             System.out.println(FormattedMovie);
         }
+    }
+
+    public void displaySeparator() {
+        System.out.println("                                                                                                                              ");
+        System.out.println("==============================================================================================================================");
+        System.out.println("                                                                                                                              ");
+
     }
 }

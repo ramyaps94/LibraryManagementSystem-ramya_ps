@@ -29,7 +29,7 @@ public class BibliotecaAppTest {
         ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
         ArrayList<HashMap<String, String>> movieList = new ArrayList<>();
         BibliotecaApp application = new BibliotecaApp(view, bookList, movieList);
-        when(view.acceptInput()).thenReturn("8").thenReturn("0");
+        when(view.acceptInput()).thenReturn("20").thenReturn("0");
         application.start();
         verify(view).display("Select a valid option!");
     }
@@ -216,6 +216,18 @@ public class BibliotecaAppTest {
         movieList.add(movie1);
 
         assertEquals(bookList, ActualBookList);
+    }
+
+    @Test
+    public void shouldBeAbleToDisplayAllCheckedOutMovieListWhenUserEnters8() {
+        View view = mock(View.class);
+        ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
+        ArrayList<HashMap<String, String>> movieList = new ArrayList<>();
+        ArrayList<HashMap<String, String>> checkedOutMovieList = new ArrayList<>();
+        BibliotecaApp application = new BibliotecaApp(view, bookList, movieList);
+        when(view.acceptInput()).thenReturn("8").thenReturn("0");
+        application.start();
+        verify(view).displayMovieList(checkedOutMovieList);
     }
 
 }
