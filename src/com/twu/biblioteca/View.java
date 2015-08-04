@@ -27,9 +27,10 @@ public class View {
 
     public void displayMenu() {
         System.out.println("Menu options are");
-        System.out.println("Enter 1 to list the books");
+        System.out.println("Enter 1 to list all the available books");
         System.out.println("Enter 2 to check out books");
         System.out.println("Enter 3 to check in books");
+        System.out.println("Enter 4 to list the checked out books");
         System.out.println("Enter 0 to quit");
     }
 }

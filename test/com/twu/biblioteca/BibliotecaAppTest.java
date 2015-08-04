@@ -33,7 +33,7 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldBeAbleToDisplayBookListWhenUserEnters1() {
+    public void shouldBeAbleToDisplayAllAvailableBookListWhenUserEnters1() {
         View view = mock(View.class);
         ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
         BibliotecaApp application = new BibliotecaApp(view, bookList);
@@ -43,7 +43,7 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldBeAbleToDisplayBookListWhenUserEnters0() {
+    public void shouldBeAbleToQuitTheApplicationWhenUserEnters0() {
         View view = mock(View.class);
         ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
         BibliotecaApp application = new BibliotecaApp(view, bookList);
@@ -129,6 +129,17 @@ public class BibliotecaAppTest {
         bookList.add(book1);
 
         assertEquals(bookList, ActualBookList);
+    }
+
+    @Test
+    public void shouldBeAbleToDisplayAllCheckedOutBookListWhenUserEnters1() {
+        View view = mock(View.class);
+        ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
+        ArrayList<HashMap<String, String>> checkedOutBookList = new ArrayList<>();
+        BibliotecaApp application = new BibliotecaApp(view, bookList);
+        when(view.acceptInput()).thenReturn("4").thenReturn("0");
+        application.start();
+        verify(view).display(checkedOutBookList);
     }
 
 }
