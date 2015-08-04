@@ -25,7 +25,7 @@ public class BibliotecaApp {
             option = view.acceptInput();
             switch (option) {
                 case "1":
-                    view.display(allAvailableBookList);
+                    view.displayBookList(allAvailableBookList);
                     break;
                 case "2":
                     view.display("Enter the name of the book to borrow");
@@ -38,16 +38,16 @@ public class BibliotecaApp {
                 case "3":
                     view.display("Enter the name of the book to return");
                     usersChoice = view.acceptInput();
-                    if(checkInBook(usersChoice))
+                    if (checkInBook(usersChoice))
                         view.display("Thank you for returning the book.");
                     else
                         view.display("That is not a valid book to return");
                     break;
                 case "4":
-                    view.display(checkedOutBookList);
+                    view.displayBookList(checkedOutBookList);
                     break;
                 case "5":
-                    view.display(allAvailableMovieList);
+                    view.displayMovieList(allAvailableMovieList);
                     break;
                 case "6":
                     view.display("Enter the movie to enjoy");
@@ -56,6 +56,14 @@ public class BibliotecaApp {
                         view.display("Thank you! Enjoy the movie");
                     else
                         view.display("That movie is not available");
+                    break;
+                case "7":
+                    view.display("Enter the name of the movie to return");
+                    usersChoice = view.acceptInput();
+                    if (checkInMovie(usersChoice))
+                        view.display("Thank you for returning the movie.");
+                    else
+                        view.display("That is not a valid movie to return");
                     break;
                 case "0":
                     view.display("The application is quiting !!! Thank You");
@@ -78,7 +86,7 @@ public class BibliotecaApp {
                 return true;
             }
         }
-            return false;
+        return false;
     }
 
     Boolean checkOutBook(String usersChoice) {
@@ -90,9 +98,10 @@ public class BibliotecaApp {
                 return true;
             }
         }
-            return false;
+        return false;
 
     }
+
     Boolean checkOutMovie(String usersChoice) {
         for (int index = 0; index < allAvailableMovieList.size(); index++) {
             HashMap movie = allAvailableMovieList.get(index);
@@ -116,5 +125,17 @@ public class BibliotecaApp {
 
     public ArrayList<HashMap<String, String>> getCheckedOutMovie() {
         return checkedOutMovieList;
+    }
+
+    public boolean checkInMovie(String usersChoice) {
+        for (int index = 0; index < checkedOutMovieList.size(); index++) {
+            HashMap movie = checkedOutMovieList.get(index);
+            if (usersChoice.equalsIgnoreCase(String.valueOf(movie.get("Name")))) {
+                allAvailableMovieList.add(movie);
+                checkedOutMovieList.remove(movie);
+                return true;
+            }
+        }
+        return false;
     }
 }

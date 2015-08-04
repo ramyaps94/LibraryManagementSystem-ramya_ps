@@ -53,7 +53,7 @@ public class ViewTest {
         bookList.add(book2);
 
         View view = new View();
-        view.display(bookList);
+        view.displayBookList(bookList);
 
         assertEquals("List of books are\n" +
                 "                         title                        author                          year\n" +
