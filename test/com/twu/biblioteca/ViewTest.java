@@ -73,10 +73,10 @@ public class ViewTest {
         movie1.put("Director", "xyz");
         movie1.put("Rating", "9");
         HashMap<String, String> movie2 = new HashMap<>();
-        movie2.put("Name" , "pk");
+        movie2.put("Name", "pk");
         movie2.put("Year", "2015");
         movie2.put("Director", "abc");
-        movie2.put("Rating","8");
+        movie2.put("Rating", "8");
         movieList.add(movie1);
         movieList.add(movie2);
         View view = new View();

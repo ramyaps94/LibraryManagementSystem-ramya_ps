@@ -13,12 +13,13 @@ public class BibliotecaAppTest {
     AuthenticateUser authenticateUser;
     ArrayList<User> allRegisteredUsers = new ArrayList<>();
     ArrayList<User> registeredLibrarian = new ArrayList<>();
+
     @Before
     public void setUp() {
         User user1 = new User("123-4567", "12345678", "user1", "123-4567", "1235678");
         User user2 = new User("123-4567", "12345678", "user1", "abc-defg", "1235678");
         User user3 = new User("123-4567", "12345678", "user1", "xyz-abcd", "1235678");
-        User librarian= new User("123-4567", "12345678", "user1", "xxx-xxxx", "12345678");
+        User librarian = new User("123-4567", "12345678", "user1", "xxx-xxxx", "12345678");
         allRegisteredUsers.add(user1);
         allRegisteredUsers.add(user2);
         allRegisteredUsers.add(user3);
@@ -72,7 +73,7 @@ public class BibliotecaAppTest {
     @Test
     public void shouldBeAbleToDisplayAllAvailableBookListWhenUserOrLibrarianEnters1() {
         View view = mock(View.class);
-        User user = new User("xxx-xxxx","12345678","librarian", "admin@mail.com", "123333809");
+        User user = new User("xxx-xxxx", "12345678", "librarian", "admin@mail.com", "123333809");
         ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
         ArrayList<HashMap<String, String>> movieList = new ArrayList<>();
         BibliotecaApp application = new BibliotecaApp(view, bookList, movieList, authenticateUser);
@@ -98,8 +99,8 @@ public class BibliotecaAppTest {
         book2.put("year", "2015");
         bookList.add(book1);
         bookList.add(book2);
-        BibliotecaApp application = new BibliotecaApp(view ,bookList, movieList, authenticateUser);
-        application.checkOutBook(allRegisteredUsers.get(1),"Wings Of Fire");
+        BibliotecaApp application = new BibliotecaApp(view, bookList, movieList, authenticateUser);
+        application.checkOutBook(allRegisteredUsers.get(1), "Wings Of Fire");
         ActualCheckList = application.getCheckedOutBook();
 
         ExpectedCheckList.add(book1);
@@ -107,31 +108,31 @@ public class BibliotecaAppTest {
         assertEquals(ExpectedCheckList, ActualCheckList);
     }
 
-     @Test
-         public void shouldBeAbleToCallViewToPrintSuccessfulCheckoutMessage() {
+    @Test
+    public void shouldBeAbleToCallViewToPrintSuccessfulCheckoutMessage() {
 
-         ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
-         ArrayList<HashMap<String, String>> movieList = new ArrayList<>();
-         HashMap<String, String> book1 = new HashMap<>();
-         book1.put("Title", "Wings Of Fire");
-         book1.put("Author", "Abdhul Kalam");
-         book1.put("year", "1995");
-         HashMap<String, String> book2 = new HashMap<>();
-         book2.put("Title", "What young India Wants");
-         book2.put("Author", "Chethan Bhaghat");
-         book2.put("year", "2015");
-         bookList.add(book1);
-         bookList.add(book2);
-         View view = mock(View.class);
-         BibliotecaApp application = new BibliotecaApp(view ,bookList, movieList, authenticateUser);
-         when(view.acceptInput()).thenReturn("2").thenReturn("Wings Of Fire").thenReturn("0");
-         User user = new User("xxx-xxxx","12345678","librarian", "admin@mail.com", "123333809");
-         application.performLibrarianOperations(user);
+        ArrayList<HashMap<String, String>> bookList = new ArrayList<>();
+        ArrayList<HashMap<String, String>> movieList = new ArrayList<>();
+        HashMap<String, String> book1 = new HashMap<>();
+        book1.put("Title", "Wings Of Fire");
+        book1.put("Author", "Abdhul Kalam");
+        book1.put("year", "1995");
+        HashMap<String, String> book2 = new HashMap<>();
+        book2.put("Title", "What young India Wants");
+        book2.put("Author", "Chethan Bhaghat");
+        book2.put("year", "2015");
+        bookList.add(book1);
+        bookList.add(book2);
+        View view = mock(View.class);
+        BibliotecaApp application = new BibliotecaApp(view, bookList, movieList, authenticateUser);
+        when(view.acceptInput()).thenReturn("2").thenReturn("Wings Of Fire").thenReturn("0");
+        User user = new User("xxx-xxxx", "12345678", "librarian", "admin@mail.com", "123333809");
+        application.performLibrarianOperations(user);
 
-         application.checkOutBook(registeredLibrarian.get(0), "Wings Of Fire");
-         verify(view).display("Enter the name of the book to borrow");
-         verify(view).display("Thank you! Enjoy the book");
-     }
+        application.checkOutBook(registeredLibrarian.get(0), "Wings Of Fire");
+        verify(view).display("Enter the name of the book to borrow");
+        verify(view).display("Thank you! Enjoy the book");
+    }
 
     @Test
     public void shouldBeAbleToCallViewToPrintUnSuccessfulCheckoutMessage() {
@@ -149,9 +150,9 @@ public class BibliotecaAppTest {
         bookList.add(book1);
         bookList.add(book2);
         View view = mock(View.class);
-        BibliotecaApp application = new BibliotecaApp(view ,bookList, movieList, authenticateUser);
+        BibliotecaApp application = new BibliotecaApp(view, bookList, movieList, authenticateUser);
         when(view.acceptInput()).thenReturn("2").thenReturn("abc").thenReturn("0");
-        User user = new User("xxx-xxxx","12345678","librarian", "admin@mail.com", "123333809");
+        User user = new User("xxx-xxxx", "12345678", "librarian", "admin@mail.com", "123333809");
         application.performLibrarianOperations(user);
 
         application.checkOutBook(registeredLibrarian.get(0), "abc");
@@ -176,8 +177,8 @@ public class BibliotecaAppTest {
         book2.put("year", "2015");
         ExpectedCheckList.add(book1);
         ExpectedCheckList.add(book2);
-        BibliotecaApp application = new BibliotecaApp(view ,bookList, movieList, authenticateUser);
-        application.checkInBook(allRegisteredUsers.get(0),"Wings Of Fire");
+        BibliotecaApp application = new BibliotecaApp(view, bookList, movieList, authenticateUser);
+        application.checkInBook(allRegisteredUsers.get(0), "Wings Of Fire");
         ExpectedCheckList.remove(book1);
 
         ActualBookList = application.getAllAvailableBook();
@@ -194,7 +195,7 @@ public class BibliotecaAppTest {
         ArrayList<HashMap<String, String>> checkedOutBookList = new ArrayList<>();
         BibliotecaApp application = new BibliotecaApp(view, bookList, movieList, authenticateUser);
         when(view.acceptInput()).thenReturn("1").thenReturn("0");
-        User user = new User("xxx-xxxx","12345678","librarian", "admin@mail.com", "123333809");
+        User user = new User("xxx-xxxx", "12345678", "librarian", "admin@mail.com", "123333809");
         application.performLibrarianOperations(user);
         verify(view).displayBookList(checkedOutBookList);
     }
@@ -206,7 +207,7 @@ public class BibliotecaAppTest {
         ArrayList<HashMap<String, String>> movieList = new ArrayList<>();
         BibliotecaApp application = new BibliotecaApp(view, bookList, movieList, authenticateUser);
         when(view.acceptInput()).thenReturn("5").thenReturn("0");
-        User user = new User("xxx-xxxx","12345678","librarian", "admin@mail.com", "123333809");
+        User user = new User("xxx-xxxx", "12345678", "librarian", "admin@mail.com", "123333809");
         application.performLibrarianOperations(user);
         verify(view).displayMovieList(movieList);
     }
@@ -224,13 +225,13 @@ public class BibliotecaAppTest {
         movie1.put("director", "xyz");
         movie1.put("rating", "9");
         HashMap<String, String> movie2 = new HashMap<>();
-        movie2.put("Name" , "pk");
+        movie2.put("Name", "pk");
         movie2.put("year", "2015");
         movie2.put("director", "abc");
-        movie2.put("rating","8");
+        movie2.put("rating", "8");
         movieList.add(movie1);
         movieList.add(movie2);
-        BibliotecaApp application = new BibliotecaApp(view ,bookList, movieList, authenticateUser);
+        BibliotecaApp application = new BibliotecaApp(view, bookList, movieList, authenticateUser);
         application.checkOutMovie(allRegisteredUsers.get(1), "3 Idiots");
         ActualCheckList = application.getCheckedOutMovie();
 
@@ -252,13 +253,13 @@ public class BibliotecaAppTest {
         movie1.put("director", "xyz");
         movie1.put("rating", "9");
         HashMap<String, String> movie2 = new HashMap<>();
-        movie2.put("Name" , "pk");
+        movie2.put("Name", "pk");
         movie2.put("year", "2015");
         movie2.put("director", "abc");
-        movie2.put("rating","8");
+        movie2.put("rating", "8");
         movieList.add(movie1);
         movieList.add(movie2);
-        BibliotecaApp application = new BibliotecaApp(view ,bookList, movieList, authenticateUser);
+        BibliotecaApp application = new BibliotecaApp(view, bookList, movieList, authenticateUser);
         ExpectedCheckList.add(movie1);
         ExpectedCheckList.add(movie2);
         application.checkInMovie(allRegisteredUsers.get(0), "3 Idiots");
@@ -278,7 +279,7 @@ public class BibliotecaAppTest {
         ArrayList<HashMap<String, String>> checkedOutMovieList = new ArrayList<>();
         BibliotecaApp application = new BibliotecaApp(view, bookList, movieList, authenticateUser);
         when(view.acceptInput()).thenReturn("8").thenReturn("0");
-        User user = new User("xxx-xxxx","12345678","librarian", "admin@mail.com", "123333809");
+        User user = new User("xxx-xxxx", "12345678", "librarian", "admin@mail.com", "123333809");
         application.performLibrarianOperations(user);
         verify(view).displayCheckedOutMovieList(checkedOutMovieList);
     }

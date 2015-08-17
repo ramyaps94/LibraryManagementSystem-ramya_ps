@@ -91,7 +91,7 @@ public class View {
 
     public void displayCheckedOutBookList(ArrayList<HashMap<String, String>> checkedOutBookList) {
         System.out.println("List of checked out books are");
-        String header = String.format("%30s%30s%30s%30s\n", "title", "author", "year","libraryId");
+        String header = String.format("%30s%30s%30s%30s\n", "title", "author", "year", "libraryId");
         System.out.println(header);
         System.out.println("===========================================================================================================================");
         for (HashMap<String, String> book : checkedOutBookList) {
@@ -102,7 +102,7 @@ public class View {
 
     public void displayCheckedOutMovieList(ArrayList<HashMap<String, String>> checkedOutMovieList) {
         System.out.println("List of movies are");
-        String header = String.format("%30s%30s%30s%30s%30s\n", "name", "year", "director", "rating","libraryId");
+        String header = String.format("%30s%30s%30s%30s%30s\n", "name", "year", "director", "rating", "libraryId");
         System.out.println(header);
         System.out.println("==========================================================================================================================================");
         for (HashMap<String, String> movie : checkedOutMovieList) {

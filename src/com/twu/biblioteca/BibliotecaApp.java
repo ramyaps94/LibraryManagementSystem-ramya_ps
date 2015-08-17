@@ -30,7 +30,7 @@ public class BibliotecaApp {
                 case "1":
                     user = view.acceptIdAndPassword();
                     user = authenticateUser.isLibrarian(user);
-                    if(user != null)
+                    if (user != null)
                         performLibrarianOperations(user);
                     else
                         view.display("not a librarian");
@@ -38,7 +38,7 @@ public class BibliotecaApp {
                 case "2":
                     user = view.acceptIdAndPassword();
                     user = authenticateUser.isNormalUser(user);
-                    if(user != null)
+                    if (user != null)
                         performUserOperations(user);
                     else
                         view.display("not valid user");
@@ -50,7 +50,7 @@ public class BibliotecaApp {
                     view.display("Invalid option entered");
                     break;
             }
-        }while(!option.equals("0"));
+        } while (!option.equals("0"));
     }
 
     void performUserOperations(User user) {
@@ -187,7 +187,7 @@ public class BibliotecaApp {
                     break;
                 case "10":
                     view.display("libraryId       username        emailId         number\n ");
-                    for(int index = 0; index < authenticateUser.getAllRegisteredUsers().size(); index++) {
+                    for (int index = 0; index < authenticateUser.getAllRegisteredUsers().size(); index++) {
                         view.displayEveryUserInformation(authenticateUser.getDetailsOfAllUsers(index));
                     }
                     view.displaySeparator();
@@ -205,11 +205,11 @@ public class BibliotecaApp {
 
     }
 
-    Boolean checkInBook(User user,String usersChoice) {
+    Boolean checkInBook(User user, String usersChoice) {
         for (int index = 0; index < checkedOutBookList.size(); index++) {
             HashMap book = checkedOutBookList.get(index);
             if (usersChoice.equalsIgnoreCase(String.valueOf(book.get("Title")))) {
-                if(user.getLibraryId().equals(book.get("libraryId"))) {
+                if (user.getLibraryId().equals(book.get("libraryId"))) {
                     allAvailableBookList.add(book);
                     checkedOutBookList.remove(book);
                     return true;
@@ -223,7 +223,7 @@ public class BibliotecaApp {
         for (int index = 0; index < allAvailableBookList.size(); index++) {
             HashMap book = allAvailableBookList.get(index);
             if (usersChoice.equalsIgnoreCase(String.valueOf(book.get("Title")))) {
-                book.put("libraryId",user.getLibraryId());
+                book.put("libraryId", user.getLibraryId());
                 checkedOutBookList.add(book);
                 allAvailableBookList.remove(book);
                 return true;
@@ -237,7 +237,7 @@ public class BibliotecaApp {
         for (int index = 0; index < allAvailableMovieList.size(); index++) {
             HashMap movie = allAvailableMovieList.get(index);
             if (usersChoice.equalsIgnoreCase(String.valueOf(movie.get("Name")))) {
-                movie.put("libraryId",user.getLibraryId());
+                movie.put("libraryId", user.getLibraryId());
                 checkedOutMovieList.add(movie);
                 allAvailableMovieList.remove(movie);
                 return true;

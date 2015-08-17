@@ -29,7 +29,7 @@ public class User {
     }
 
     public String getDetails() {
-        return libraryId+"      "+userName+"       "+emailId+"     "+contactNumber;
+        return libraryId + "      " + userName + "       " + emailId + "     " + contactNumber;
     }
 
 

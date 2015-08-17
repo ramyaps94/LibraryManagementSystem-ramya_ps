@@ -13,7 +13,7 @@ public class Main {
         User user1 = new User("123-4567", "12345678", "user1", "user1@mail.com", "111111111");
         User user2 = new User("abc-defg", "12345678", "user2", "user2@mail.com", "222222222");
         User user3 = new User("xyz-abcd", "12345678", "user3", "user3@mail.com", "333333333");
-        User librarian= new User("xxx-xxxx", "12345678", "librarian", "admin@mail.com", "123333809");
+        User librarian = new User("xxx-xxxx", "12345678", "librarian", "admin@mail.com", "123333809");
         allRegisteredUsers.add(user1);
         allRegisteredUsers.add(user2);
         allRegisteredUsers.add(user3);
@@ -41,7 +41,7 @@ public class Main {
         movie2.put("Rating", "8");
         movieList.add(movie1);
         movieList.add(movie2);
-        BibliotecaApp application = new BibliotecaApp(view, bookList, movieList,authenticateUser);
+        BibliotecaApp application = new BibliotecaApp(view, bookList, movieList, authenticateUser);
         application.start();
     }
 }
