@@ -247,18 +247,6 @@ public class BibliotecaApp {
 
     }
 
-    public ArrayList<HashMap<String, String>> getAllAvailableBook() {
-        return allAvailableBookList;
-    }
-
-    public ArrayList<HashMap<String, String>> getCheckedOutBook() {
-        return checkedOutBookList;
-    }
-
-    public ArrayList<HashMap<String, String>> getCheckedOutMovie() {
-        return checkedOutMovieList;
-    }
-
     public boolean checkInMovie(User user, String usersChoice) {
         for (int index = 0; index < checkedOutMovieList.size(); index++) {
             HashMap movie = checkedOutMovieList.get(index);
@@ -272,5 +260,17 @@ public class BibliotecaApp {
             }
         }
         return false;
+    }
+
+    public ArrayList<HashMap<String, String>> getAllAvailableBook() {
+        return allAvailableBookList;
+    }
+
+    public ArrayList<HashMap<String, String>> getCheckedOutBook() {
+        return checkedOutBookList;
+    }
+
+    public ArrayList<HashMap<String, String>> getCheckedOutMovie() {
+        return checkedOutMovieList;
     }
 }

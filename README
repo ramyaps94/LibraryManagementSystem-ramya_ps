@@ -14,7 +14,7 @@ Instructions to push your code to code.google.com
     $ git add -A
     $ git commit -m “Initial commit”
 
-(Dont forget to add the hidden .idea folder, as it will make opening your project in Intellij easier.)
+(Don't forget to add the hidden .idea folder, as it will make opening your project in Intellij easier.)
 
 4. After you are done with the local commit, you can share your code with "The World" by pushing it to your
  GitHub repository.
@@ -32,6 +32,12 @@ DESCRIPTION
 
 Bibilioteca is a library management system
 
+It does the following :
+ [1] Can login with valid credentials.
+ [2] Can list All available books and movies in the library.
+ [3] Can checkout available books and movies from the library.
+ [4] Can check in checked out books and movies to the library..
+ [5] Can list the users who have checked out the books and movies.
 
 SETUP
 =====
@@ -40,6 +46,7 @@ SETUP
 [2] Import junit-4.11.jar
 [3] Install ANT version 1.9.5
 [4] Install IntelliJ Idea
+[5] Install mockito-all-1.9.5.jar
 
 BUILD
 =====
