@@ -110,7 +110,6 @@ public class BibliotecaApp {
                     break;
                 case "0":
                     view.display("You are logging out !!! Thank You");
-                    start();
                     break;
                 default:
                     view.display("Select a valid option!");
